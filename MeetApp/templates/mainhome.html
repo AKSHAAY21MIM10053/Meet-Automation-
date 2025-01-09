@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Home</title>
+    <link rel="icon" type="png" href="{% static 'images/LOGO.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/mainhome.css' %}">
+
+</head>
+<body style="background-color: rgb(53, 79, 82);">
+
+
+    {% comment %} Nav start  {% endcomment %}
+
+    <nav class="navbar navbar-expand-md sticky-top border-bottom "  style="background-color: rgb(47, 62, 70);" data-bs-theme="dark">
+        <div class="container">
+          <a class="navbar-brand d-md-none" href="#">
+            <svg class="bi" width="24" height="24"><use xlink:href="#aperture"></use></svg>
+            Aperture
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav flex-grow-1 justify-content-between">
+                <li class="nav-item"><a class="nav-link" href="#">
+                  <svg class="bi" width="24" height="24"><use xlink:href="#aperture"></use></svg>
+                </a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'loginone' %}">Login</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'updatepassword' %}">Update Password</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'registerauthentication' %}">Admin</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Products' %}">Products</a></li>
+
+                  <svg class="bi" width="24" height="24"><use xlink:href="#cart"></use></svg>
+                </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      {% comment %} Nav End  {% endcomment %}
+
+      {% comment %} Heading Start  {% endcomment %}
+
+      <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary rounded" >
+        <div class="col-md-6 p-lg-5 mx-auto my-5 rounded">
+          <h1 class="display-3 fw-bold">Doclink</h1>
+          <h3 class="fw-normal">AI-Driven Insights for Better Healthcare Communication.</h3>
+        </div>
+        <!-- Left Rectangle -->
+        <div class="product-device shadow-sm product-device-left" style="background-color: rgb(82, 121, 111);"></div>
+        <!-- Right Rectangle -->
+        <div class="product-device shadow-sm product-device-right" style="background-color: rgb(47, 62, 70);"></div>
+      </div>
+      
+
+      {% comment %} Heading end  {% endcomment %}
+
+      {% comment %} Hero start  {% endcomment %}
+
+      <div class="p-4 p-md-5 mb-4 rounded text-body-emphasis content" style="background-color: rgb(82, 121, 111);">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{% static 'images/Hero.jpg' %}" class="d-block mx-lg-auto img-fluid rounded" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3" style="color: rgb(47, 62, 70) !important;">Seamless Meeting Documentation for Enhanced Care</h1>
+            <p class="lead">Transform the way healthcare professionals manage patient interactions. Our AI solution quietly captures essential details from meetings, providing timely and accurate records to support ongoing care and communication</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+              <a href="{% url 'loginone' %}">
+                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2" >Try</button>
+              </a>
+              <a href="{% url 'register' %}">
+                <button type="button" class="btn btn-success btn-lg px-4">Sign Up</button>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+      {% comment %} Hero end  {% endcomment %}
+
+      {% comment %} content start  {% endcomment %}
+
+      <div class="container-fluid my-5 ">
+        <div class="row">
+          <!-- Content Section -->
+          <div class="col-md-6">
+            <h2 style="color: rgb(82, 121, 111) !important;">Transform doctor-patient interactions with our advanced AI assistant</h2>
+            <br>
+            <p>
+              Simply share the meeting link, and our bot automatically joins, listens attentively, and captures key details. From treatment plans and medication schedules to follow-up appointments, it generates precise summaries in both English and the patient’s native language. Summaries are delivered via email and accessible on our platform for seamless reference.
+            </p>
+            <p>
+              With intelligent suggestions tailored to the conversation, our AI empowers better understanding, fosters stronger connections, and enhances patient engagement.
+            </p>
+          </div>
+      
+          <!-- Why Choose Section -->
+          <div class="col-md-6">
+            <h3 style="color: rgb(82, 121, 111) !important;">Why Choose Our Solution?</h3>
+            <ul>
+              <li><strong>Automated Efficiency:</strong> Seamlessly captures and organizes essential meeting details.</li>
+              <li><strong>Multilingual Support:</strong> Provides summaries in English and local languages for better accessibility.</li>
+              <li><strong>Actionable Insights:</strong> Delivers smart suggestions based on discussion outcomes.</li>
+              <li><strong>Enhanced Retention:</strong> Helps patients stay informed and recall critical information.</li>
+              <li><strong>Convenient Access:</strong> Summaries are sent via email and available on the platform anytime.</li>
+              <li><strong>Strengthened Communication:</strong> Facilitates clearer and more effective interactions.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    
+      
+      {% comment %} content end  {% endcomment %}
+
+      {% comment %} carousel Start  {% endcomment %}
+
+      {% comment %} <div id="carouselExampleFade" class="carousel slide carousel-fade rounded">
+        <div class="carousel-inner rounded">
+          <div class="carousel-item active">
+            <img src="{% static 'images/ONE.png' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/TWO.png' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static 'images/THREE.png' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div> {% endcomment %}
+
+      {% comment %} carousel end  {% endcomment %}  
+
+       {% comment %} steps start  {% endcomment %}
+
+       <div class="accordion content" id="accordionPanelsStayOpenExample">
+        <div class="accordion-item" style="background-color: rgb(132, 169, 140); border-color: rgb(47, 62, 70); border-width: 1px;">
+          <h2 class="accordion-header">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne" style="background-color: rgb(82, 121, 111); color: rgb(47, 62, 70);">
+              1. Account Creation
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+            <div class="accordion-body" style="font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif; font-size: 15px; color: rgb(53, 79, 82);">
+              Doctor Initiates: The doctor creates an account for the patient on the platform by entering their basic details.
+              <br>
+              Email Notification: Once the account is created, an email is automatically sent to the patient containing their login credentials and instructions for accessing their dashboard.
+              <br>
+              Patient Login: The patient logs into the platform to access their personalized dashboard, which will store all meeting summaries and provide communication tools for follow-up questions.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" style="background-color: rgb(132, 169, 140); border-color: rgb(47, 62, 70); border-width: 1px;">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo" style="background-color: rgb(82, 121, 111); color: rgb(47, 62, 70);">
+              2. Meeting Setup
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+            <div class="accordion-body" style="font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif; font-size: 15px; color: rgb(53, 79, 82);">
+              Copy and Paste: The patient or doctor copies the meeting link (G meet), pastes it into the platform, and clicks "Submit."
+              <br>
+              AI Bot Joins: The intelligent bot automatically joins the meeting, waits until it ends, and captures essential details such as treatment plans, medication schedules, and follow-up appointments.
+              <br>
+              Multilingual Support: During this process, the bot processes content for both English and the patient’s native language to ensure comprehensive understanding.
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item" style="background-color: rgb(132, 169, 140); border-color: rgb(47, 62, 70); border-width: 1px;">
+          <h2 class="accordion-header">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree" style="background-color: rgb(82, 121, 111); color: rgb(47, 62, 70);">
+              3. Post-Meeting Summary
+            </button>
+          </h2>
+          <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+            <div class="accordion-body" style="font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif; font-size: 15px; color: rgb(53, 79, 82);">
+              Email Summary: Within 2–3 minutes after the meeting concludes, the bot generates and sends a detailed summary to the patient via email.
+              <br>
+              Platform Update: The same summary is securely updated on the patient’s dashboard, where they can review it at any time.
+              <br>
+              Doctor-Patient Communication: If the patient has any questions or requires clarification, they can use the platform's messaging system to directly reach out to the doctor.
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      
+       {% comment %} steps end  {% endcomment %}
+
+       {% comment %} footer start {% endcomment %}
+
+       
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto border-top cont " style="background-color: rgb(47, 62, 70);">
+          <div class="col-md-4 d-flex align-items-center">
+            <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+              <svg class="bi" width="30" height="24"><i></i></svg>
+            </a>
+            <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
+          </div>
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex pe-3">
+            <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/akshaay-10-" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/akshaay_10/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+            <li class="ms-3"><a class="text-body-secondary" href="https://wa.me/9150854710" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+          </ul>           
+        </footer>
+     
+      
+
+
+       {% comment %} footer end {% endcomment %}
+</body>
+</html>

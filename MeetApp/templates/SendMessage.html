@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Message</title>
+    <link rel="icon" type="png" href="{% static 'images/LOGO.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/sendmessage.css' %}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+{% comment %} Nav start  {% endcomment %}
+    <nav class="navbar navbar-expand-md sticky-top border-bottom "  style="background-color: rgb(47, 62, 70);" data-bs-theme="dark">
+        <div class="container">
+          <a class="navbar-brand d-md-none" href="#">
+            <svg class="bi" width="24" height="24"><use xlink:href="#aperture"></use></svg>
+            Aperture
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+              <ul class="navbar-nav flex-grow-1 justify-content-between">
+                {% comment %} <li class="nav-item"><a class="nav-link" href="#">
+                  <svg class="bi" width="24" height="24"><use xlink:href="#aperture"></use></svg>
+                </a></li> {% endcomment %}
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'adminacess' %}">Create Patient</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'MessageDisplay' %}">Meeting Minutes</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Meetbot' %}">Meet Bot</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'SendMessage' %}">Send Message</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'SeeMessage' %}">Messages</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Profile' %}">Profile</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'registerauthentication' %}">Admin</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+                  <svg class="bi" width="24" height="24"><use xlink:href="#cart"></use></svg>
+                </a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+    
+      {% comment %} Nav End  {% endcomment %}
+
+
+
+      {% comment %} BOX start {% endcomment %}
+
+  <div class="container mt-4" style="padding-top: 55px; padding-bottom: 15px;">
+    <!-- Messages Section -->
+    {% if messages %}
+        <div class="mb-4 d-flex flex-column align-items-center fontstyle" style="width: 25vw; margin: 0 auto;">
+            {% for message in messages %}
+                <div class="alert alert-info text-center w-100">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <!-- Form Section -->
+    <div class="text-white new py-3" style="padding-left: 25px; padding-right: 25px; padding-top: 0px;  width: 35vw; margin:auto; border-radius: 10px;">
+        <form class="row g-3"  enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            
+            <div class="col-md-12" >
+                <label for="to" class="form-label fontstyle">Send Message To :</label>
+                <select class="form-select" name="to" required>
+                {% for Email in all_users %}
+                <option value="{{ Email }}">{{ Email }}</option>
+                {% endfor %}
+                </select>
+            </div>
+
+            <div class="col-md-12 testa" style="padding-bottom: 5px;">
+                <label for="message" class="form-label fontstyle">Message : </label>
+                <textarea type="text" name="message" class="form-control" id="message" style="height: 150px; width: 100%;" required></textarea>
+            </div>
+            
+
+            <div class="col-md-12 testa" style="padding-bottom: 5px;">
+                <label for="image"  class="fontstyle">Upload Img</label>
+                <input type="file"  class="fontstyle" name="image" id="image" accept="image/*" >
+            </div>
+
+
+            <!-- Submit Button -->
+            <div class="col-12 text-center" style="padding-top: 10px;">
+                <button type="submit" value="submit" class="btn btn-primary">Send Message</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Go to Login Link -->
+    <div class="text-center mt-3">
+        <a href="{% url 'SeeMessage' %}" class="btn bold btn-link" style="font-size: 20px; text-decoration:none">View Messages</a>
+    </div>
+</div>
+
+
+  {% comment %} BOX END {% endcomment %}
+
+    {% comment %} footer start {% endcomment %}
+
+       
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto border-top cont" style="background-color: rgb(47, 62, 70); position: fixed; bottom: 0; width: 100%; z-index: 1000;">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><i ></i></svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
+        </div>
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex pe-3">
+          <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/akshaay-10-" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/akshaay_10/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://wa.me/9150854710" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+        </ul>
+    </footer>
+    
+  
+  
+  {% comment %} footer end {% endcomment %}
+
+
+   
+</body>
+</html>
+
+{% comment %} <h1>Send Message</h1>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="to">To:</label>
+    <select name="to" required>
+        {% for Email in all_users %}
+        <option value="{{ Email }}">{{ Email }}</option>
+        {% endfor %}
+    </select>
+    <br><br>
+    <label for="message">Message:</label>
+    <textarea name="message" required></textarea>
+    <br><br>
+    <label for="image">Image:</label>
+    <input type="file" name="image" accept="image/*">
+    <br><br>
+    <button type="submit">Send</button>
+</form> {% endcomment %}

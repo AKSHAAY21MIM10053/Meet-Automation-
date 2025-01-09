@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buy Product</title>
+    <link rel="icon" type="png" href="{% static 'images/LOGO.png' %}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/products.css' %}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+{% comment %} Nav start {% endcomment %}
+<nav class="navbar navbar-expand-md sticky-top border-bottom" style="background-color: rgb(47, 62, 70);" data-bs-theme="dark">
+    <div class="container">
+        <a class="navbar-brand d-md-none" href="#">
+            <svg class="bi" width="24" height="24"><use xlink:href="#aperture"></use></svg>
+            Aperture
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+            <div class="offcanvas-body">
+                <ul class="navbar-nav flex-grow-1 justify-content-between">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'MessageDisplay' %}">Meeting Minutes</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'SendMessage' %}">Send Message</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'SeeMessage' %}">Messages</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Products' %}">Products</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Cart' %}">Cart</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'orderview' %}">Orders</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Profile' %}">Profile</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'registerauthentication' %}">Admin</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+{% comment %} Nav End {% endcomment %}
+
+{% comment %} Heading Start {% endcomment %}
+<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary rounded">
+    <div class="col-md-6 p-lg-5 mx-auto my-5 rounded">
+        <h1 class="display-3 fw-bold">Doclink</h1>
+        <h3 class="fw-normal">Buy Medicines and Essentials.</h3>
+    </div>
+    <div class="product-device shadow-sm product-device-left" style="background-color: rgb(82, 121, 111);"></div>
+    <div class="product-device shadow-sm product-device-right" style="background-color: rgb(47, 62, 70);"></div>
+</div>
+{% comment %} Heading end {% endcomment %}
+
+<div class="container mt-4" style="padding-top: 15px; padding-bottom: 15px;">
+  {% if messages %}
+  <div class="mb-4 d-flex flex-column align-items-center fontstyle" style="width: 35vw; margin: 0 auto;">
+      {% for message in messages %}
+          <div class="alert alert-info text-center w-100">
+              {{ message }}
+          </div>
+      {% endfor %}
+  </div>
+  {% endif %}
+  <!-- Filter Section -->
+  <div class="mb-4">
+      <form method="GET" action="" class="d-flex justify-content-center">
+          <select name="product_type" class="form-select" style="width: 250px;">
+              <option value="" selected>All Products</option>
+              <option value="Injection">Injection</option>
+              <option value="Tablet">Tablet</option>
+              <option value="Syrup">Syrup</option>
+              <option value="Bandage">Bandage</option>
+              <option value="Machines">Machines</option>
+              <option value="Cream">Cream</option>
+          </select>
+          <button type="submit" class="btn btn-primary ms-2">Filter</button>
+      </form>
+  </div>
+
+  <!-- Products Display -->
+  <div class="d-flex flex-wrap justify-content-center rounded">
+      {% for product in Product %}
+      <div class="card m-3" style="width: 18rem; background-color: rgb(132, 169, 140); display: flex; flex-direction: column;">
+          <!-- Product Image -->
+          <img src="{% static product.ImagePath %}" class="card-img-top" alt="Product Image" style="height: 200px; object-fit: cover;">
+          <div class="card-body d-flex flex-column justify-content-between">
+              <!-- Product Details -->
+              <h5 class="card-title font-weight-bold">{{ product.ProductName }}</h5>
+              <p class="card-text">{{ product.Description }}</p>
+              <p class="card-text font-weight-bold">Price: ₹{{ product.Price }}</p>
+
+              <!-- Add to Cart Form -->
+              <form method="POST" action="{% url 'AddToCart' %}">
+                  {% csrf_token %}
+                  <input type="hidden" name="product_name" value="{{ product.ProductName }}">
+                  <input type="hidden" name="price" value="{{ product.Price }}">
+                  <div class="mb-2">
+                      <label for="quantity_{{ forloop.counter }}" class="form-label">Quantity:</label>
+                      <select name="quantity" id="quantity_{{ forloop.counter }}" class="form-select" required>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                      </select>
+                  </div>
+                  <button type="submit" class="btn btn-success w-100">Add to Cart</button>
+              </form>
+          </div>
+      </div>
+      {% endfor %}
+  </div>
+</div>
+
+
+{% comment %} footer start {% endcomment %}
+<footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto border-top cont" style="background-color: rgb(47, 62, 70); bottom: 0; width: 100%; z-index: 1000;">
+    <div class="col-md-4 d-flex align-items-center">
+        <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><i></i></svg>
+        </a>
+        <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
+    </div>
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex pe-3">
+        <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/akshaay-10-" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+        <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/akshaay_10/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+        <li class="ms-3"><a class="text-body-secondary" href="https://wa.me/9150854710" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+    </ul>
+</footer>
+{% comment %} footer end {% endcomment %}
+
+</body>
+</html>

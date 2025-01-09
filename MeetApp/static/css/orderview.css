@@ -1,0 +1,380 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+body {
+    color: rgb(202, 210, 197) !important; /* Ensure body text color is white */
+}
+
+h1, h2, h3, p, li {
+    color: rgb(202, 210, 197) !important; /* Apply white text color */
+}
+
+/* Additional styles to override if necessary */
+.navbar, .btn, .navbar-nav .nav-link {
+    color: rgb(202, 210, 197) !important; /* White color for navbar and buttons */
+}
+
+.navbar-nav .nav-link:hover {
+  color: rgb(132, 169, 140) !important; /* Hover color for navbar links */
+}
+
+h3.fw-normal {
+    color: rgb(53, 79, 82) !important;
+}
+
+
+
+footer a, footer .text-body-secondary {
+color: rgb(202, 210, 197) !important; /* Ensure footer links are white */
+transition: color 0.3s ease; /* Smooth transition */
+}
+
+footer a:hover,
+footer .text-body-secondary:hover {
+color: rgb(132, 169, 140) !important; /* Hover color for footer links and text */
+}
+
+body {
+    background-color: rgb(27, 58, 75) !important;
+}
+
+h1.display-3.fw-bold {
+    color: rgb(47, 62, 70) !important;
+}
+
+
+/* Base container styling */
+.position-relative {
+    background-color: #1c1e21; /* Dark background */
+    color: #ffffff; /* White text */
+    padding: 5rem 0;
+    position: relative;
+    text-align: center; /* Centers the text inside */
+}
+
+.col-md-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin: 0 auto;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem; /* Space between h1 and h3 */
+}
+
+h3 {
+    color: #adb5bd; /* Muted gray color */
+    margin-bottom: 2rem; /* Space below h3 */
+    font-weight: normal;
+}
+
+.product-device {
+    width: 300px;
+    height: 500px;
+    position: absolute;
+    top: 50%; /* Center vertically */
+    transform: translateY(-50%); /* Adjust for centering */
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-device-left {
+    background-color: #f8f9fa; /* Light gray */
+    left: -150px;
+    transform: translateY(-50%) rotate(-25deg); /* Rotate slightly */
+}
+
+.product-device-right {
+    background-color: #343a40; /* Dark gray */
+    right: -150px;
+    transform: translateY(-50%) rotate(25deg); /* Rotate slightly */
+}
+
+h1 {
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 35px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 38.5px;
+    color: rgb(255, 255, 255); /* Changed color to white */
+  }
+  
+  h2 {
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 30.4px;
+    color: rgb(255, 255, 255); /* Changed color to white */
+  }
+  
+  h3 {
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 25px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    line-height: 15.4px;
+    color: rgb(255, 255, 255); /* Changed color to white */
+  }
+  
+  pre {
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 18.5714px;
+    color: rgb(200, 200, 200); /* Changed color to light gray */
+  }
+  
+  p {
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 28.5714px;
+    color: rgb(240, 240, 240); /* Changed color to a soft white */
+  }
+  
+  li {
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 25.5714px;
+    color: rgb(240, 240, 240); /* Changed color to a soft white */
+  }
+  
+
+
+
+.rounded{
+    border-radius:10px ;
+}
+
+.carousel-item img {
+    width: 500px; /* Ensures the image takes the full width of the container */
+    height: 440px; /* Set a fixed height for the images */
+    object-fit: cover; /* Ensures the image covers the area while maintaining its aspect ratio */
+}
+
+.carousel{
+    margin: 16px; 
+}
+
+.content{
+    margin: 16px;
+}
+
+.cont{
+    width: 100%;
+   
+}
+
+
+.navbar,.btn , .navbar-nav .nav-link {
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 28.5714px;
+  }
+
+.fontstyle{
+    font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+    font-size: 20px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    line-height: 28.5714px;
+}
+
+.new {
+
+    background-color: rgb(82, 121, 111);
+}
+
+.testa{
+    align-items: flex-start;
+}
+
+.address{
+    padding: 2rem;
+    justify-content: space-between;
+}
+
+.cart-container {
+    width: 70%; /* Reduced width for better centering */
+    margin: 40px auto; /* Centers the cart with space from top */
+    text-align: center; /* Center the title and the total section */
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 2px solid #90ee90; /* Light green border */
+    background-color: rgb(82, 121, 111); /* Light green background for the entire item */
+    padding: 15px;
+    margin-bottom: 15px; /* Spacing between items */
+    border-radius: 8px; /* Rounded corners for a clean look */
+    max-width: 100%; /* Ensure it doesn't overflow */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto;
+}
+
+.product-details {
+    flex-grow: 2; /* Occupy more space for product details */
+    /* background-color: #ffb6c1; Light pink background for product section */
+    padding: 10px;
+    border-radius: 8px; /* Rounded corners for a clean look */
+    margin-right: 15px; /* Spacing between details and price */
+    text-align: left;
+}
+
+.product-name, .product-quantity {
+    margin: 0;
+    /* font-size: 1em; Standard font size for readability */
+}
+
+.product-price {
+    font-weight: bold;
+    text-align: right;
+    margin-right: 15px; /* Consistent spacing on the right */
+    font-size: 1em; /* Standard font size */
+    flex-grow: 1; /* Ensure alignment of price */
+}
+
+.remove-button {
+    background-color: #ff4d4d; /* Red button for removing items */
+    color: white;
+    border: none;
+    padding: 8px 12px; /* Better spacing for the button */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners for a clean button look */
+    font-size: 0.9em; /* Slightly smaller font for buttons */
+}
+
+.total-section {
+    text-align: right;
+    margin-top: 20px;
+    font-size: 1.3em; /* Slightly larger font for emphasis */
+    font-weight: bold;
+    color: #ffffff; /* White text for better visibility */
+    margin-top: 30px; /* Adds spacing between the last item and the total */
+}
+
+h2 {
+    text-align: center; /* Center the header */
+    font-size: 2em; /* Make the header a bit larger */
+    margin-bottom: 20px; /* Space between header and cart items */
+}
+
+/* Styling for the Paytm logo */
+.paytm-logo {
+    display: block;
+    margin: 0 auto 20px;
+    max-width: 50vw;  /* Limit the image to 50% of the viewport width */
+    max-height: 150px;
+    object-fit: contain; /* Ensures the image maintains its aspect ratio */
+}
+
+/* Styling for the checkout form */
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkout-form label {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.checkout-form input {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.checkout-form .total-amount {
+    font-size: 16px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    padding: 12px 18px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+.checkout-form {
+    background-color: rgb(82, 121, 111);
+    padding: 20px;
+    border-radius: 8px;
+    font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+    color: rgb(202, 210, 197);
+    margin-bottom: 35px;
+}
+.checkout-form label {
+    display: block;
+    margin-bottom: 5px;
+}
+.checkout-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+.checkout-form .total-amount {
+    color: rgb(132, 169, 140);
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.checkout-form .submit-button {
+    background-color: rgb(47, 62, 70);
+    color: rgb(202, 210, 197);
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}

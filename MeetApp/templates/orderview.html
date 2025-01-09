@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Details</title>
+    <link rel="icon" type="png" href="{% static 'images/LOGO.png' %}">
+    <style>
+        body {
+            font-family: Candara, Calibri, Segoe, 'Segoe UI', Optima, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+            padding-top: 25px;   
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;         
+        }
+
+        .order {
+            background-color: rgb(53, 79, 82);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            margin: 20px auto;
+            padding: 20px;
+            max-width: 800px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+        }
+
+        .row, .footer-row, .details {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .row:last-child, .footer-row:last-child, .details:last-child {
+            border-bottom: none;
+        }
+
+        .products {
+            margin-top: 20px;
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            {% comment %} color: rgb(157, 78, 221) {% endcomment %}
+        }
+
+        .products h3 {
+            text-align: center;
+            color: #555;
+            margin-bottom: 15px;
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            
+        }
+
+        .product-header, .product-header span {
+            font-weight: bold;
+            color: #666;
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            {% comment %} color: rgb(157, 78, 221) {% endcomment %}
+        }
+
+        .products div {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            
+        }
+
+        .products div:last-child {
+            border-bottom: none;
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            
+        }
+
+        .total-price {
+            text-align: right;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: rgb(132, 169, 140);
+            margin-top: 20px;
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+        }
+
+        .details strong {
+            
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            {% comment %} color: rgb(157, 78, 221) {% endcomment %}
+        }
+
+        .edit-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .edit-button:hover {
+            background-color: #0056b3;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 50px;
+            font-family: Candara, Calibri, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+            {% comment %} color: rgb(157, 78, 221) {% endcomment %}
+        }
+    </style>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/orderview.css' %}">
+</head>
+<body class="d-flex flex-column min-vh-100">
+
+    
+{% comment %} Nav start  {% endcomment %}
+<nav class="navbar navbar-expand-md sticky-top border-bottom "  style="background-color: rgb(47, 62, 70);" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand d-md-none" href="#">
+        <svg class="bi" width="24" height="24"><use xlink:href="#aperture"></use></svg>
+        Aperture
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasLabel">Aperture</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav flex-grow-1 justify-content-between">
+            {% comment %} <li class="nav-item"><a class="nav-link" href="#">
+              <svg class="bi" width="24" height="24"><use xlink:href="#aperture"></use></svg>
+            </a></li> {% endcomment %}
+            <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'MessageDisplay' %}">Meeting Minutes</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'SendMessage' %}">Send Message</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'SeeMessage' %}">Messages</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Products' %}">Products</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Cart' %}">Cart</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'orderview' %}">Orders</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'Profile' %}">Profile</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'registerauthentication' %}">Admin</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Logout</a></li>
+
+              <svg class="bi" width="24" height="24"><use xlink:href="#cart"></use></svg>
+            </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+{% comment %} Nav End  {% endcomment %}
+
+    <h1>Order Details</h1>
+    {% if orders %}
+        {% for order in orders %}
+            <div class="order">
+                <!-- Row 1: Order ID and Date -->
+                <div class="row">
+                    <div><strong>Name:</strong> {{ order.Name }}   <strong>Email:</strong> {{ order.Email }}</div>
+                    <div><strong>Order ID:</strong> {{ order.OrderID }}</div>
+                    <div><strong>Date:</strong> {{ order.Date }}</div>
+                </div>
+
+                <!-- Row 2: Products -->
+                <div class="products">
+                    <h3>Products</h3>
+                    <div class="product-header">
+                        <span>Product Name</span>
+                        <span>Quantity</span>
+                        <span>Price</span>
+                        <span>Total Price</span>
+                    </div>
+                    {% for product in order.Products %}
+                        <div>
+                            <span>{{ product.ProductName }}</span>
+                            <span>{{ product.Quantity }}</span>
+                            <span>₹{{ product.Price }}</span>
+                            <span>₹{{ product.TotalPrice }}</span>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <!-- Total Price -->
+                <div class="total-price">Total Price: ₹{{ order.Total_Price }}</div>
+
+                <!-- Address and Phone -->
+                <div class="details">
+                    <div><strong>Address:</strong> {{ order.Address }}</div>
+                    <div><strong>Phone:</strong> {{ order.Phone }}</div>
+                </div>
+                
+
+                <!-- Row 3: Pay ID, OTP, and Order Status -->
+                <div class="footer-row">
+                    <div><strong>Pay ID:</strong> {{ order.PayID }}</div>
+                    <div><strong>OTP:</strong> {{ order.Otp }}</div>
+                    <div><strong>Order Status:</strong> {{ order.Product_status }}</div>
+                </div>
+
+                <!-- Superuser Edit Button -->
+                {% if superuser %}
+                    <div class="footer-row">
+                        <a href="{% url 'edit_order_status' order.OrderID %}" class="edit-button">Edit Status</a>
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No orders found.</p>
+    {% endif %}
+
+
+    
+    {% comment %} footer start {% endcomment %}
+
+       
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 mt-auto border-top cont" style="background-color: rgb(47, 62, 70);  bottom: 0; width: 100%; z-index: 1000;">
+        <div class="col-md-4 d-flex align-items-center">
+          <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+            <svg class="bi" width="30" height="24"><i ></i></svg>
+          </a>
+          <span class="mb-3 mb-md-0 text-body-secondary">© 2024 Company, Inc</span>
+        </div>
+        <ul class="nav col-md-4 justify-content-end list-unstyled d-flex pe-3">
+          <li class="ms-3"><a class="text-body-secondary" href="https://www.linkedin.com/in/akshaay-10-" target="_blank"><i class="bi bi-linkedin"></i></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://www.instagram.com/akshaay_10/" target="_blank"><i class="bi bi-instagram"></i></a></li>
+          <li class="ms-3"><a class="text-body-secondary" href="https://wa.me/9150854710" target="_blank"><i class="bi bi-whatsapp"></i></a></li>
+        </ul>
+    </footer>
+    
+  
+  
+  {% comment %} footer end {% endcomment %}
+
+
+</body>
+</html>
